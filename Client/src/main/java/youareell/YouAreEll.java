@@ -1,6 +1,9 @@
 package youareell;
 
 import controllers.*;
+import views.SimpleShell;
+
+import java.io.IOException;
 
 public class YouAreEll {
 
@@ -20,8 +23,11 @@ public class YouAreEll {
         System.out.println(urlhandler.MakeURLCall("/messages", "GET", ""));
     }
 
-    public String get_ids() {
+    public String get_ids() throws IOException {
         return tt.makecall("/ids", "GET", "");
+    }
+    public String post_id(String name, String githubName) throws Exception {
+        return tt.postId(name, githubName);
     }
 
     public String get_messages() {

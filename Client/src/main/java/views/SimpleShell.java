@@ -74,6 +74,13 @@ public class SimpleShell {
                     continue;
                 }
 
+                //add user to ids on server
+                if (list.contains("create")) {
+                    String results = urll.post_id(commands[1], commands[2]);
+                    SimpleShell.prettyPrint(results);
+                    continue;
+                }
+
                 // messages
                 if (list.contains("messages")) {
                     String results = urll.get_messages();
@@ -115,6 +122,8 @@ public class SimpleShell {
             //catch ioexception, output appropriate message, resume waiting for input
             catch (IOException e) {
                 System.out.println("Input Error, Please try again!");
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
             // So what, do you suppose, is the meaning of this comment?
             /** The steps are:
